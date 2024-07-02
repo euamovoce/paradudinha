@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você me ama?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image: url('http://minutoligado.com.br/wp-content/uploads/2013/09/te-quero-de-volta.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo semitransparente para destacar o texto */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Duda, você me ama?</h1>
+        <button id="yesBtn">Sim</button>
+        <button id="noBtn">Não</button>
+        <p id="message" style="display:none; font-size: 18px; margin-top: 20px;"></p>
+    </div>
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const message = document.getElementById('message');
+
+        noBtn.addEventListener('mouseover', () => {
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            
+            let newLeft = Math.random() * (containerRect.width - btnRect.width);
+            let newTop = Math.random() * (containerRect.height - btnRect.height);
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${newLeft}px`;
+            noBtn.style.top = `${newTop}px`;
+        });
+
+        yesBtn.addEventListener('click', () => {
+            message.textContent = 'Eu também amo você';
+            message.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
